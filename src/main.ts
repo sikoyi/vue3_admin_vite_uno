@@ -1,7 +1,6 @@
 import { createApp } from 'vue';
 
 import 'reset.css';
-import 'element-plus/dist/index.css';
 import 'virtual:svg-icons-register';
 import 'virtual:uno.css';
 import './styles/index.scss';

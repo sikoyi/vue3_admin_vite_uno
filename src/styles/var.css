@@ -1,0 +1,10 @@
+/* 全局变量 */
+
+:root {
+  /* 左侧菜单宽度 */
+  --base-menu-width: 260px;
+  /* 左侧菜单背景 */
+  --base-menu-background: #3B5998;
+  /* 顶部导航的高度 */
+  --base-tabbar-height: 100px;
+}

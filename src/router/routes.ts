@@ -25,7 +25,7 @@ const constantRoute = [
 			{
 				//首页
 				path: '/home',
-				component: () => import('@/views/home/index.vue'),
+				component: () => import('@/layout/index.vue'),
 				name: 'home',
 				meta: {
 					title: '首页', //菜单标题

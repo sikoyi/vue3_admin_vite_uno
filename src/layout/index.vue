@@ -3,8 +3,7 @@
 		<el-container class="w-full h-full">
 			<SideNavBar></SideNavBar>
 			<el-container>
-				<el-header class="header-nav">
-				</el-header>
+				<el-header class="header-nav"></el-header>
 				<el-main class="content left-[var(--base-tabbar-height)]"></el-main>
 				<el-footer></el-footer>
 			</el-container>

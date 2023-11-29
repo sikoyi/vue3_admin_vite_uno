@@ -15,7 +15,6 @@
 
 <script lang="ts" setup>
 defineOptions({ name: 'Menu' });
-
 </script>
 
 <style lang="sass" scoped></style>

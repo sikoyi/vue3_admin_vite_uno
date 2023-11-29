@@ -16,7 +16,7 @@ import setting from '@/setting';
 	color: white;
 	display: flex;
 	align-items: center;
-    margin-left: 20px;
+	margin-left: 20px;
 	font-size: var(--base-logo-title-font-size);
 	img {
 		width: 40px;

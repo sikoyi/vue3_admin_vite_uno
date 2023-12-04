@@ -1,24 +1,26 @@
-export interface loginResponseData {
+export interface responseData {
 	code: number;
-	data: {
-		token: string;
-		message: string;
-	};
+	message: string;
+	ok: boolean;
+}
+// 登录接口返回数据
+export interface loginResponseData extends responseData {
+	data: string;
 }
 
+// 登录参数
 export interface loginForm {
 	username: string;
 	password: string;
 }
 
-export interface userResponseData {
-	userId: number;
-	avatar: string;
-	username: string;
-	password: string;
-	desc: string;
-	roles: string[];
-	buttons: string[];
-	routes: string[];
-	token: string;
+// 用户信息接口返回值
+export interface userResponseData extends responseData {
+	data: {
+		routes: string[];
+		buttons: string[];
+		roles: string[];
+		name: string;
+		avatar: string;
+	};
 }

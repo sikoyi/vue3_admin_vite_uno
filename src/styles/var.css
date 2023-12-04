@@ -5,6 +5,8 @@
   --base-menu-width: 260px;
   /* 左侧菜单背景 */
   --base-menu-background: #3B5998;
+  /* 左侧菜单折叠时的宽度 */
+  --base-menu-min-width: 64px;
   /* 顶部导航的高度 */
   --base-tabbar-height: 100px;
   /* 左侧菜单的logo高度设置 */

@@ -32,16 +32,17 @@
 import { User, Lock } from '@element-plus/icons-vue';
 import { reactive, ref } from 'vue';
 import useUserStore from '@/store/modules/user';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute, LocationQueryValue } from 'vue-router';
 import { ElNotification, FormInstance } from 'element-plus';
 import { getTime } from '@/utils/time';
 
 const userStore = useUserStore();
 const $router = useRouter();
+const $route = useRoute();
 
 const fromData = reactive({
 	username: 'admin',
-	password: '111111',
+	password: 'atguigu123',
 });
 
 const ruleFormRef = ref<FormInstance>();
@@ -55,7 +56,8 @@ const login = async () => {
 	try {
 		const result = await userStore.userLogin(fromData);
 		console.log(result);
-		$router.push('/');
+		const prevRoutePath = ($route.query.redirect as LocationQueryValue) || '/';
+		$router.push({ path: prevRoutePath });
 		ElNotification({
 			type: 'success',
 			message: '登录成功',

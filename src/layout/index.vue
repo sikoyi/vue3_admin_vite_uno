@@ -20,7 +20,6 @@ import sideNavBar from './components/side-nav-bar/index.vue';
 import tabBar from './components/tab-bar/index.vue';
 import LayoutMain from './components/layout-main/index.vue';
 defineOptions({ name: 'Layout' });
-
 </script>
 <style lang="scss" scoped>
 .layout-container {

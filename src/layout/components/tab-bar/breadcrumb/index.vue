@@ -5,7 +5,13 @@
 		</el-icon>
 
 		<el-breadcrumb separator-icon="ArrowRight" class="ml-20px">
-			<el-breadcrumb-item class="flex items-center" v-for="item in $route.matched" :index="item.path" v-show="item.meta.title" :to="item.path">
+			<el-breadcrumb-item
+				class="flex items-center"
+				v-for="item in $route.matched"
+				:index="item.path"
+				v-show="item.meta.title"
+				:to="item.path"
+			>
 				<el-icon class="mr-3px">
 					<component :is="item.meta.icon"></component>
 				</el-icon>

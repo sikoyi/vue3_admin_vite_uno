@@ -6,9 +6,9 @@
 </template>
 
 <script lang="ts" setup>
-import BreadCrumb from './breadcrumb/index.vue'
-import Setting from './setting/index.vue'
-defineOptions({name: 'TabBar'})
+import BreadCrumb from './breadcrumb/index.vue';
+import Setting from './setting/index.vue';
+defineOptions({ name: 'TabBar' });
 </script>
 
 <style>

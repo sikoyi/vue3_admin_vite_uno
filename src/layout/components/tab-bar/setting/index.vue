@@ -53,7 +53,7 @@ const fullscreen = () => {
 };
 
 // 退出登录
-const logout = async() => {
+const logout = async () => {
 	await userStore.userLogout();
 	$router.replace({ path: '/login', query: { redirect: $route.path } });
 };

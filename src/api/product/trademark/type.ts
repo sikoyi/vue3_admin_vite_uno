@@ -5,7 +5,7 @@ export type Trademark = {
 	id?: number;
 	tmName: string;
 	logoUrl: string;
-}
+};
 
 // 已有品牌类型
 export type Records = [];

@@ -12,8 +12,8 @@
 				</el-table-column>
 				<el-table-column prop="address" label="品牌操作">
 					<template #default="scope">
-						<el-button type="primary" @click="updateTrademark(scope.$index, scope.row)" icon="edit">编辑</el-button>
-						<el-button type="danger" @click="deleteTrademark(scope.$index, scope.row)" icon="delete">删除</el-button>
+						<el-button type="primary" @click="updateTrademark(scope.row)" icon="edit">编辑</el-button>
+						<el-button type="danger" @click="deleteTrademark(scope.row)" icon="delete">删除</el-button>
 					</template>
 				</el-table-column>
 			</el-table>
@@ -30,10 +30,7 @@
 			/>
 		</el-card>
 
-
-
-
-
+		<!-- 测试测试 -->
 		<!-- 对话框: 添加品牌/修改品牌 -->
 		<el-dialog v-model="dialogFormVisible" :title="dialogTitle">
 			<el-form class="w-80%">
@@ -55,8 +52,8 @@
 			</el-form>
 			<template #footer>
 				<span class="dialog-footer">
-					<el-button @click="cancel = false">取消</el-button>
-					<el-button type="primary" @click="confirm = false">确定</el-button>
+					<el-button @click="cancel">取消</el-button>
+					<el-button type="primary" @click="confirm">确定</el-button>
 				</span>
 			</template>
 		</el-dialog>
@@ -65,9 +62,9 @@
 
 <script lang="ts" setup>
 import { ref, onMounted, reactive } from 'vue';
-import { reqHasTrademark } from '@/api/product/trademark';
+import { reqAddTrademark, reqHasTrademark, reqUpdateTrademark } from '@/api/product/trademark';
 import { Records, Trademark } from '@/api/product/trademark/type';
-import { ElMessage, UploadProps } from 'element-plus';
+import { ElMessage, ElNotification, UploadProps } from 'element-plus';
 
 // 当前页码
 let pageNo = ref<number>(1);
@@ -125,16 +122,20 @@ const dialogTitle = ref('');
 // 添加品牌
 const addTrademark = () => {
 	dialogFormVisible.value = true;
+	trademarkParams.id = undefined;
+	trademarkParams.tmName = '';
+	trademarkParams.logoUrl = '';
 	dialogTitle.value = '添加品牌';
 };
 
 // 编辑品牌
-const updateTrademark = (index: number, rowInfo) => {
+const updateTrademark = (rowInfo: Trademark) => {
 	dialogFormVisible.value = true;
+	Object.assign(trademarkParams, rowInfo);
 	dialogTitle.value = '编辑品牌';
 };
 // 删除品牌
-const deleteTrademark = (index: number, rowInfo) => {
+const deleteTrademark = (rowInfo: Trademark) => {
 	dialogFormVisible.value = true;
 	dialogTitle.value = '删除品牌';
 };
@@ -170,7 +171,46 @@ const cancel = () => {
 	dialogFormVisible.value = false;
 };
 // 对话框底部确认
-const confirm = () => {
+const confirm = async () => {
+	let result;
+	switch (dialogTitle.value) {
+		case '添加品牌':
+			result = await reqAddTrademark(trademarkParams);
+			if (result.code === 200) {
+				ElMessage({
+					message: '添加品牌成功',
+					type: 'success',
+				});
+				await getHasTrademark();
+			} else {
+				ElMessage({
+					type: 'error',
+					message: '添加品牌失败',
+				});
+			}
+			break;
+		case '编辑品牌':
+			result = await reqUpdateTrademark(trademarkParams);
+			if (result.code === 200) {
+				ElMessage({
+					message: '添加品牌成功',
+					type: 'success',
+				});
+				await getHasTrademark();
+			} else {
+				ElMessage({
+					type: 'error',
+					message: '添加品牌失败',
+				});
+			}
+			break;
+		case '删除品牌':
+			break;
+		default:
+			console.log('未知业务类型');
+			break;
+	}
+	console.log(result);
 	dialogFormVisible.value = false;
 };
 </script>

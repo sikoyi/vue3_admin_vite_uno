@@ -14,12 +14,14 @@ const useUserStore = defineStore('User', () => {
 
 	const userLogin = async (data: loginForm) => {
 		const result = await reqLogin(data);
+		console.log('result', result);
+
 		if (result.code === 200) {
 			token.value = result.data;
 			SET_TOKEN(token.value);
 			return 'ok';
 		} else {
-			return Promise.reject(new Error(result.data));
+			return Promise.reject(new Error(result.message));
 		}
 	};
 

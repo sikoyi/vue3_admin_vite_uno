@@ -1,6 +1,5 @@
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
-import { viteMockServe } from 'vite-plugin-mock';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import { defineConfig, loadEnv } from 'vite';
 import UnoCSS from 'unocss/vite';
@@ -17,11 +16,6 @@ export default defineConfig(({ command, mode }) => {
 				iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
 				// Specify symbolId format
 				symbolId: 'icon-[dir]-[name]',
-			}),
-			viteMockServe({
-				mockPath: 'mock',
-				enable: true,
-				logger: true, // 开启控制台显示请求日志
 			}),
 		],
 		resolve: {

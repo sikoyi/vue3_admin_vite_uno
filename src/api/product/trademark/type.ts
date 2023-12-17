@@ -8,7 +8,7 @@ export type Trademark = {
 };
 
 // 已有品牌类型
-export type Records = [];
+export type Records = Trademark[];
 
 // 已有品牌全部数据
 export interface TrademarkData extends responseData {

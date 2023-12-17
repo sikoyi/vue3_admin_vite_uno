@@ -1,6 +1,7 @@
 // 商品管理模块请求
 import request from '@/utils/request';
-import { Records, TrademarkData } from './type';
+import { Records, Trademark, TrademarkData } from './type';
+import { responseData } from '@/api/user/type';
 
 enum API {
 	// 获取已有品牌接口
@@ -18,7 +19,7 @@ export const reqHasTrademark = (page: number, limit: number) =>
 	request.get<any, TrademarkData>(`${API.TRADEMARK_URL}/${page}/${limit}`);
 
 // 新增品牌接口
-export const addTrademark = (data: Records) => request.post<any, null>(API.ADD_TRADEMARK_URL, data);
+export const reqAddTrademark = (data: Trademark) => request.post<any, responseData>(API.ADD_TRADEMARK_URL, data);
 
 // 删除已有品牌接口
 export const removeTrademark = (category3Id: number, limit: number) =>
@@ -27,4 +28,4 @@ export const removeTrademark = (category3Id: number, limit: number) =>
 	});
 
 // 更新已有品牌接口
-export const deleteTrademark = (data: Records) => request.put<any, null>(API.UPDATE_TRADEMARK_URL, data);
+export const reqUpdateTrademark = (data: Records) => request.put<any, null>(API.UPDATE_TRADEMARK_URL, data);

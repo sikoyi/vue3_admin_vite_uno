@@ -2,9 +2,9 @@ import request from '@/utils/request';
 import type { loginForm, loginResponseData, userResponseData } from './type';
 
 enum API {
-	LOGIN_URL = '/admin/acl/index/login',
-	LOGOUT_URL = '/admin/acl/index/logout',
-	USERINFO_URL = '/admin/acl/index/info',
+	LOGIN_URL = '/user/login',
+	LOGOUT_URL = '/user/logout',
+	USERINFO_URL = '/user/info',
 }
 
 // 登录接口方法

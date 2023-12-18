@@ -5,7 +5,10 @@ export interface responseData {
 }
 // 登录接口返回数据
 export interface loginResponseData extends responseData {
-	data: string;
+	data: {
+		accessToken: string;
+		refreshToken: string;
+	};
 }
 
 // 登录参数
@@ -17,10 +20,13 @@ export interface loginForm {
 // 用户信息接口返回值
 export interface userResponseData extends responseData {
 	data: {
-		routes: string[];
-		buttons: string[];
-		roles: string[];
-		name: string;
-		avatar: string;
+		menus: any[];
+		permissions: any[];
+		user: {
+			id: number;
+			nickname: string;
+			avatar: string;
+		};
+		roles: string[]; // 身份信息
 	};
 }

@@ -5,7 +5,6 @@ import { reqLogin, reqLogout, reqUserInfo } from '@/api/user';
 import { ref } from 'vue';
 import { constantRoute } from '@/router/routes';
 import { GET_TOKEN, REMOVE_TOKEN, SET_TOKEN } from '@/utils/token';
-import { ElNotification } from 'element-plus';
 
 const useUserStore = defineStore('User', () => {
 	const token = ref(GET_TOKEN());
@@ -17,7 +16,7 @@ const useUserStore = defineStore('User', () => {
 		console.log('result', result);
 
 		if (result.code === 200) {
-			token.value = result.data;
+			token.value = result.data.accessToken;
 			SET_TOKEN(token.value);
 			return 'ok';
 		} else {
@@ -31,8 +30,8 @@ const useUserStore = defineStore('User', () => {
 		if (result.code === 200) {
 			// 更新用户信息
 			const data = result.data;
-			username.value = data.name;
-			avatar.value = data.avatar;
+			username.value = data.user.nickname;
+			avatar.value = data.user.avatar;
 			return 'ok';
 		}
 

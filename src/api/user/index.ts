@@ -4,7 +4,7 @@ import type { loginForm, loginResponseData, userResponseData } from './type';
 enum API {
 	LOGIN_URL = '/user/login',
 	LOGOUT_URL = '/user/logout',
-	USERINFO_URL = '/user/info',
+	USERINFO_URL = '/user/get-permission-info',
 }
 
 // 登录接口方法

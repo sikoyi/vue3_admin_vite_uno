@@ -29,7 +29,6 @@ import useUserStore from '@/store/modules/user';
 
 let settingStore = useLayOutSettingStore();
 const userStore = useUserStore();
-console.log(userStore)
 const $router = useRouter();
 const $route = useRoute();
 
